@@ -27,30 +27,39 @@ textarea {
 input, textarea, button {
   -webkit-appearance: none;
   background: #333;
+  border-radius: 0;
   border: 1px solid #fff;
   color: #fff;
-  border-radius: 0;
   font-family: inherit;
   font-size: inherit;
+  outline: 0;
+}
+
+input {
+  width: 152px;
 }
 
 button {
   float: right;
 }
 
+input, button {
+  padding: 1px 8px;
+}
+
 ul {
   border-radius: 4px;
   margin: 0;
-  padding: 0;
   overflow: auto;
+  padding: 0;
 }
 
 li {
   background: #f9f9f9;
   color: #000;
   list-style: none;
-  padding: 10px;
   margin: 20px 0;
+  padding: 10px;
 }
 
 li:first-of-type {
