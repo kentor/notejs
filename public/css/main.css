@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #1a1b1f;
+  font: 15px HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  margin: auto;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+textarea {
+  display: block;
+  height: 100px;
+  margin: 20px 0;
+  outline: 0;
+  resize: none;
+  width: 100%;
+}
+
+input, textarea, button {
+  -webkit-appearance: none;
+  background: #333;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  float: right;
+}
+
+ul {
+  border-radius: 4px;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+li {
+  background: #f9f9f9;
+  color: #000;
+  list-style: none;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+li:first-of-type {
+  border-radius: 4px 4px 0 0;
+}
+
+li:last-of-type {
+  border-radius: 0 0 4px 4px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.controls {
+  font-size: 12px;
+}
+
+.icons {
+  display: inline-block;
+  float: right;
+}
+
+.delete-note {
+  display: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.note-content {
+  word-wrap: break-word;
+}
+
+.note-content a {
+  text-decoration: underline;
+}
+
+.note-content p {
+  margin: 10px 0;
+}
+
+.note-content p:first-of-type {
+  margin: 0;
+}
+
+.note-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  aside {
+    float: left;
+    margin-right: 20px;
+    position: relative;
+    width: 220px;
+  }
+
+  .delete-note {
+    display: inline;
+  }
+}
+
+#edit-with-js-bin {
+  display: none!important;
+}
