@@ -48,13 +48,11 @@ input, textarea, button {
 
 input {
   width: 152px;
+  padding: 1px 2px;
 }
 
 button {
   float: right;
-}
-
-input, button {
   padding: 1px 8px;
 }
 
