@@ -12,11 +12,11 @@ Ember.TEMPLATES['note'] = require('./templates/note.hbs');
 
 App = Ember.Application.create();
 
-App.authRequired = true;
+App.authRequired = false;
 
 App.set('user', JSON.parse(localStorage.getItem('user')));
 
-App.firebaseRef = new Firebase('https://qdsndc.firebaseio.com');
+App.firebaseRef = new Firebase('https://selfnote.firebaseio.com');
 
 App.ApplicationRoute = Ember.Route.extend({
   activate: function() {
