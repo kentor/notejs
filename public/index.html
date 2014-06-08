@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
+    <script type="text/x-handlebars" data-template-name="login">
+      <a href="#" {{action 'login'}} class="login-button">Login</a>
+    </script>
+
     <script type="text/x-handlebars" data-template-name="index">
       <div id="wrapper">
         <aside>
@@ -18,6 +22,10 @@
 
           <div>
             {{input value=filterText}}
+          </div>
+
+          <div>
+            {{link-to 'Logout' 'logout' class="logout-button"}}
           </div>
         </aside>
 
@@ -50,6 +58,7 @@
 
     <script src="js/ember-data.js"></script>
     <script src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
+    <script src='https://cdn.firebase.com/js/simple-login/1.5.0/firebase-simple-login.js'></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/emberFire/1.0.9/emberfire.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>

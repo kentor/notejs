@@ -1,7 +1,24 @@
 App = Ember.Application.create();
 
+App.user = JSON.parse(localStorage.getItem('user'));
+
+App.firebaseRef = new Firebase('https://qdsndc.firebaseio.com');
+App.auth = new FirebaseSimpleLogin(App.firebaseRef, function(error, user) {
+  if (user) {
+    App.user = user;
+    localStorage.setItem('user', JSON.stringify(user));
+    App.Router.router.transitionTo('index');
+  } else if (error) {
+    console.log(error);
+  } else {
+    App.user = null;
+    localStorage.removeItem('user');
+    App.Router.router.transitionTo('login');
+  }
+});
+
 App.ApplicationAdapter = DS.FirebaseAdapter.extend({
-  firebase: new Firebase('https://qdsndc.firebaseio.com'),
+  firebase: App.firebaseRef,
 });
 
 App.Note = DS.Model.extend({
@@ -40,16 +57,36 @@ App.Note = DS.Model.extend({
   }.observes('hidden'),
 });
 
-App.IndexRoute = Ember.Route.extend({
-  model: function() {
-    store = this.store;
-    return this.store.findAll('note');
-  },
+App.Router.map(function() {
+  this.route('login');
+  this.route('logout');
+});
 
-  actions: {
-    deleteNote: function(note) {
-      note.destroyRecord();
+App.AuthenticatedRoute = Ember.Route.extend({
+  beforeModel: function() {
+    if (!App.user) {
+      this.transitionTo('login');
     }
+  },
+});
+
+App.LoginRoute = Ember.Route.extend({
+  actions: {
+    login: function() {
+      App.auth.login('twitter', { preferRedirect: true, rememberMe: true });
+    },
+  },
+});
+
+App.LogoutRoute = Ember.Route.extend({
+  beforeModel: function() {
+    App.auth.logout();
+  },
+});
+
+App.IndexRoute = App.AuthenticatedRoute.extend({
+  model: function() {
+    return this.store.findAll('note');
   },
 });
 
@@ -141,7 +178,7 @@ App.NoteView = Ember.View.extend({
     if (Ember.isBlank(window.getSelection().toString()) && !e.target.tagName.match(/^[ai]$/i)) {
       this.get('controller').send('toggleLocalHidden', this.get('context'));
     }
-  }
+  },
 });
 
 App.Utils = {
