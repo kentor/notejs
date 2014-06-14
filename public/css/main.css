@@ -63,7 +63,7 @@ button {
 
 ul {
   border-radius: 4px;
-  overflow: auto;
+  flex-grow: 1;
 }
 
 li {
@@ -131,11 +131,13 @@ a {
 }
 
 @media (min-width: 700px) {
+  #wrapper {
+    display: flex;
+  }
+
   aside {
-    float: left;
     margin-right: 20px;
-    position: relative;
-    width: 220px;
+    min-width: 220px;
   }
 
   .delete-note {
