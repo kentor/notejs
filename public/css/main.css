@@ -90,12 +90,14 @@ li:hover {
 }
 
 .controls {
+  align-items: center;
+  display: flex;
   font-size: 12px;
+  justify-content: space-between;
 }
 
 .icons {
-  display: inline-block;
-  float: right;
+  line-height: 1em;
 }
 
 .delete-note {
