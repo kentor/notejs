@@ -63,7 +63,7 @@ button {
 
 ul {
   border-radius: 4px;
-  flex-grow: 1;
+  -webkit-flex-grow: 1;
 }
 
 li {
@@ -87,10 +87,10 @@ li:hover {
 }
 
 .controls {
-  align-items: center;
-  display: flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: space-between;
+  display: -webkit-flex;
   font-size: 12px;
-  justify-content: space-between;
 }
 
 .icons {
@@ -132,7 +132,7 @@ a {
 
 @media (min-width: 700px) {
   #wrapper {
-    display: flex;
+    display: -webkit-flex;
   }
 
   aside {
