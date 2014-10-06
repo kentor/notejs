@@ -1,0 +1,30 @@
+{
+  "name": "notejs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kentor/notejs",
+  "authors": [
+    "Kenneth Chung <ken70r@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "firebase": "~1.1.1",
+    "emberfire": "~1.2.6",
+    "ember": "~1.7.0",
+    "handlebars": "1.3.0",
+    "jquery": "~2.1.1",
+    "moment": "~2.8.3",
+    "pagedown": "~1.1.0",
+    "randomColor": "~0.1.1",
+    "requirejs": "~2.1.15"
+  },
+  "resolutions": {
+    "firebase": "~1.1.1"
+  }
+}
