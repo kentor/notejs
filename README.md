@@ -2,7 +2,7 @@
 A [Firebase](https://www.firebase.com/) backed [Ember](http://emberjs.com/) application for storing notes. Intended for a single user only.
 
 ## Demo
-http://kentor.me/notejs/public/ (open two instances to see them sync updates in real time).
+http://kentor.me/notejs/public/ (open two instances side by side to see them sync updates in real time).
 
 ## To create your own
 - Fork the project.
@@ -11,7 +11,7 @@ http://kentor.me/notejs/public/ (open two instances to see them sync updates in 
 - If you don't need authentication, check out the `gh-pages` branch which has commented out some code in `main.js` that disables authentication checking.
 - If you do need authentication, you need to set up simple auth on your firebase app. In your firebase app dashboard, go to "Simple Login" and then follow their instructions to set up "Authentication Providers".
 - In `main.js` replace the `twitter` in `App.auth.login('twitter', { preferRedirect: true, rememberMe: true });` with the provider of your choice.
-- In your firebase "Security Rules" tab, setup your security rules to allow a specific user to read/write. An example:
+- In your firebase "Security Rules" tab, set up your security rules to allow a specific user to read/write. An example:
 
     ```
     {
@@ -22,7 +22,7 @@ http://kentor.me/notejs/public/ (open two instances to see them sync updates in 
     }
     ```
 
-    If you don't what to put in place of `twitter:12345678`, you can find out but logging in with this app and then checking `Auth.user` in the console to get the `uid`.
+    If you don't know what to put in place of `twitter:12345678`, you can find out by logging in with your app and then checking `App.user` in the console to get the `uid`. This allows that user id to read and write.
 - You can host the project on heroku as a simple rack application. Or you can just host the `public/` folder at any static web hosting provider like [neocities](https://neocities.org/).
 
 ## License
