@@ -3,17 +3,20 @@ App = Ember.Application.create();
 App.user = JSON.parse(localStorage.getItem('user'));
 
 App.firebaseRef = new Firebase('https://qdsndc.firebaseio.com');
-App.auth = new FirebaseSimpleLogin(App.firebaseRef, function(error, user) {
+
+App.firebaseRef.onAuth(function(user) {
   if (user) {
     App.user = user;
     localStorage.setItem('user', JSON.stringify(user));
-    App.Router.router.transitionTo('index');
-  } else if (error) {
-    console.log(error);
+    if (App.Router.router) {
+      App.Router.router.transitionTo('index');
+    }
   } else {
     App.user = null;
     localStorage.removeItem('user');
-    App.Router.router.transitionTo('login');
+    if (App.Router.router) {
+      App.Router.router.transitionTo('login');
+    }
   }
 });
 
@@ -73,14 +76,14 @@ App.AuthenticatedRoute = Ember.Route.extend({
 App.LoginRoute = Ember.Route.extend({
   actions: {
     login: function() {
-      App.auth.login('twitter', { preferRedirect: true, rememberMe: true });
+      App.firebaseRef.authWithOAuthRedirect('twitter', Ember.K);
     },
   },
 });
 
 App.LogoutRoute = Ember.Route.extend({
   beforeModel: function() {
-    App.auth.logout();
+    App.firebaseRef.unauth();
   },
 });
 
@@ -185,4 +188,4 @@ App.Utils = {
   escapeRegExp: function(str) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
   },
-}
+};
