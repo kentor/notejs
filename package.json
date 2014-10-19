@@ -24,7 +24,7 @@
   },
   "browser": {
     "ember": "./bower_components/ember/ember.js",
-    "ember-data": "./bower_components/ember-data/ember-data.js"
+    "ember-data": "./bower_components/ember-data/ember-data.min.js"
   },
   "browserify-shim": {
     "ember": {
