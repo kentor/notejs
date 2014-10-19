@@ -23,7 +23,7 @@ http://kentor.me/notejs/public/ (open two instances side by side to see them syn
     ```
 
     If you don't know what to put in place of `twitter:12345678`, you can find out by logging in with your app and then checking `App.user` in the console for the `uid` property.
-- Be sure to run `grunt` or `grunt watch` to see the changes.
+- Be sure to run `npm run watch` to see the changes. And `npm run build` before deploying.
 - You can host the project on heroku as a simple rack application. Or you can just host the `public/` folder at any static web hosting provider like [neocities](https://neocities.org/).
 
 ## License

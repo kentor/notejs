@@ -1,3 +1,11 @@
+var Ember       = require('ember');
+var Firebase    = require('firebase');
+var DS          = require('ember-data');
+                  require('emberfire');
+var moment      = require('moment');
+var randomColor = require('randomcolor');
+var Markdown    = require('pagedown');
+
 App = Ember.Application.create();
 
 App.user = JSON.parse(localStorage.getItem('user'));
