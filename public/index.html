@@ -24,9 +24,11 @@
             {{input value=filterText}}
           </div>
 
-          <div>
-            {{link-to 'Logout' 'logout' class="logout-button"}}
-          </div>
+          {{#if App.user}}
+            <div>
+              {{link-to 'Logout' 'logout' class="logout-button"}}
+            </div>
+          {{/if}}
         </aside>
 
         <ul>

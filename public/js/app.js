@@ -65315,6 +65315,8 @@ var Markdown    = require('pagedown');
 
 App = Ember.Application.create();
 
+App.authRequired = true;
+
 App.user = JSON.parse(localStorage.getItem('user'));
 
 App.firebaseRef = new Firebase('https://qdsndc.firebaseio.com');
@@ -65382,7 +65384,7 @@ App.Router.map(function() {
 
 App.AuthenticatedRoute = Ember.Route.extend({
   beforeModel: function() {
-    if (!App.user) {
+    if (App.authRequired && !App.user) {
       this.transitionTo('login');
     }
   },
