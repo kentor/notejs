@@ -182,7 +182,7 @@ App.NoteView = Ember.View.extend({
   }.property(),
 
   onclick: function() {
-    return ''
+    return '';
   }.property(),
 
   click: function(e) {
