@@ -7,7 +7,7 @@ var uglify     = require('gulp-uglify');
 var watchify   = require('watchify');
 
 gulp.task('build', function() {
-  return browserify('./public/js/main.js')
+  return browserify('./public/js/main.js', { debug: true })
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
