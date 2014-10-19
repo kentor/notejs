@@ -16,7 +16,7 @@
       <div id="wrapper">
         <aside>
           <div>
-            {{view App.NewNoteTextArea value=newNoteContent}}
+            {{note-textarea action='postNote' value=newNoteContent}}
             <button {{action 'postNote'}}>Post</button>
           </div>
 
@@ -24,7 +24,7 @@
             {{input value=filterText}}
           </div>
 
-          {{#if App.user}}
+          {{#if loggedIn}}
             <div>
               {{link-to 'Logout' 'logout' class="logout-button"}}
             </div>

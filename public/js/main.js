@@ -10,19 +10,19 @@ App = Ember.Application.create();
 
 App.authRequired = true;
 
-App.user = JSON.parse(localStorage.getItem('user'));
+App.set('user', JSON.parse(localStorage.getItem('user')));
 
 App.firebaseRef = new Firebase('https://qdsndc.firebaseio.com');
 
 App.firebaseRef.onAuth(function(user) {
   if (user) {
-    App.user = user;
+    App.set('user', user);
     localStorage.setItem('user', JSON.stringify(user));
     if (App.Router.router) {
       App.Router.router.transitionTo('index');
     }
   } else {
-    App.user = null;
+    App.set('user', null);
     localStorage.removeItem('user');
     if (App.Router.router) {
       App.Router.router.transitionTo('login');
@@ -129,9 +129,12 @@ App.IndexController = Ember.ArrayController.extend({
     return this.get('filteredNotes.length');
   }.property('filteredNotes.length'),
 
+  loggedIn: function() {
+    return App.get('user');
+  }.property('App.user'),
+
   actions: {
     postNote: function() {
-      whatdafuq = this;
       if (Ember.isBlank(this.get('newNoteContent'))) {
         return;
       }
@@ -148,10 +151,10 @@ App.IndexController = Ember.ArrayController.extend({
   },
 });
 
-App.NewNoteTextArea = Ember.TextArea.extend({
+App.NoteTextareaComponent = Ember.TextArea.extend({
   keyDown: function(e) {
     if (e.keyCode == 13 && e.ctrlKey) {
-      this.get('parentView.controller').send('postNote');
+      this.sendAction();
       e.preventDefault(); // prevents new line from pressing enter
     }
   },
