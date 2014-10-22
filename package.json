@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "finalhandler": "^0.3.1",
+    "morgan": "^1.4.0",
     "serve-static": "^1.7.0"
   },
   "devDependencies": {
