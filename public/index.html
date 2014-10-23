@@ -53,6 +53,9 @@
       <div {{bind-attr class="localHidden:hidden :note-content"}}>
         {{{formattedContent}}}
       </div>
+      <a href="#" {{action 'destroy' bubbles=false}} class="swipe-delete">
+        Delete
+      </a>
     </script>
 
     <script src="js/app.js"></script>

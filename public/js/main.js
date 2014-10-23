@@ -5,6 +5,7 @@ var DS          = require('ember-data');
 var moment      = require('moment');
 var randomColor = require('randomcolor');
 var Markdown    = require('pagedown');
+var Hammer      = require('hammerjs');
 
 App = Ember.Application.create();
 
@@ -179,7 +180,23 @@ App.NoteController = Ember.ObjectController.extend({
 App.NoteView = Ember.View.extend({
   tagName: 'li',
 
+  classNames: ['note'],
   attributeBindings: ['style', 'onclick'],
+  classNameBindings: ['swiped'],
+
+  didInsertElement: function() {
+    new Hammer(this.element, {
+      cssProps: {
+        userSelect: true
+      }
+    })
+    .on('swipeleft', function() {
+      this.set('swiped', true);
+    }.bind(this))
+    .on('swiperight', function() {
+      this.set('swiped', false);
+    }.bind(this));
+  },
 
   style: function() {
     return 'background:%@'
