@@ -9,55 +9,6 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <script type="text/x-handlebars" data-template-name="login">
-      <a href="#" {{action 'login'}} class="login-button">Login</a>
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="index">
-      <div id="wrapper">
-        <aside>
-          <div>
-            {{note-textarea action='postNote' value=newNoteContent}}
-            <button {{action 'postNote'}}>Post</button>
-          </div>
-
-          <div>
-            {{input value=filterText}}
-          </div>
-
-          {{#if loggedIn}}
-            <div>
-              {{link-to 'Logout' 'logout' class="logout-button"}}
-            </div>
-          {{/if}}
-        </aside>
-
-        <ul>
-          <li>Notes: {{notesCount}}</li>
-          {{#each filteredNotes}}
-            {{render 'note' this}}
-          {{/each}}
-          <li>Notes: {{notesCount}}</li>
-        </ul>
-      </div>
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="note">
-      <div class="controls">
-        <time>{{timeAgo}}</time>
-        <div class="icons">
-          <a href="#" {{action 'toggleHidden' bubbles=false}}>{{hiddenStateLabel}}</a>
-          <a href="#" class="delete-note" {{action 'destroy' bubbles=false}}>✖</a>
-        </div>
-      </div>
-      <div {{bind-attr class="localHidden:hidden :note-content"}}>
-        {{{formattedContent}}}
-      </div>
-      <a href="#" {{action 'destroy' bubbles=false}} class="swipe-delete">
-        Delete
-      </a>
-    </script>
-
     <script src="js/app.js"></script>
   </body>
 </html>

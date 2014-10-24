@@ -1,0 +1,13 @@
+<div class="controls">
+  <time>{{timeAgo}}</time>
+  <div class="icons">
+    <a href="#" {{action 'toggleHidden' bubbles=false}}>{{hiddenStateLabel}}</a>
+    <a href="#" class="delete-note" {{action 'destroy' bubbles=false}}>✖</a>
+  </div>
+</div>
+<div {{bind-attr class="localHidden:hidden :note-content"}}>
+  {{{formattedContent}}}
+</div>
+<a href="#" {{action 'destroy' bubbles=false}} class="swipe-delete">
+  Delete
+</a>

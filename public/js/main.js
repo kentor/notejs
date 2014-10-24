@@ -7,6 +7,10 @@ var randomColor = require('randomcolor');
 var Markdown    = require('pagedown');
 var Hammer      = require('hammerjs');
 
+Ember.TEMPLATES['index'] = require('./templates/index.hbs');
+Ember.TEMPLATES['login'] = require('./templates/login.hbs');
+Ember.TEMPLATES['note'] = require('./templates/note.hbs');
+
 App = Ember.Application.create();
 
 App.authRequired = true;

@@ -1,0 +1,26 @@
+<div id="wrapper">
+  <aside>
+    <div>
+      {{note-textarea action='postNote' value=newNoteContent}}
+      <button {{action 'postNote'}}>Post</button>
+    </div>
+
+    <div>
+      {{input value=filterText}}
+    </div>
+
+    {{#if loggedIn}}
+      <div>
+        {{link-to 'Logout' 'logout' class="logout-button"}}
+      </div>
+    {{/if}}
+  </aside>
+
+  <ul>
+    <li>Notes: {{notesCount}}</li>
+    {{#each filteredNotes}}
+      {{render 'note' this}}
+    {{/each}}
+    <li>Notes: {{notesCount}}</li>
+  </ul>
+</div>
