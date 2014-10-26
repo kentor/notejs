@@ -19,20 +19,20 @@ App.set('user', JSON.parse(localStorage.getItem('user')));
 
 App.firebaseRef = new Firebase('https://qdsndc.firebaseio.com');
 
-App.firebaseRef.onAuth(function(user) {
-  if (user) {
-    App.set('user', user);
-    localStorage.setItem('user', JSON.stringify(user));
-    if (App.Router.router) {
-      App.Router.router.transitionTo('index');
-    }
-  } else {
-    App.set('user', null);
-    localStorage.removeItem('user');
-    if (App.Router.router) {
-      App.Router.router.transitionTo('login');
-    }
-  }
+App.ApplicationRoute = Ember.Route.extend({
+  activate: function() {
+    App.firebaseRef.onAuth(function(user) {
+      if (user) {
+        App.set('user', user);
+        localStorage.setItem('user', JSON.stringify(user));
+        this.transitionTo('index');
+      } else {
+        App.set('user', null);
+        localStorage.removeItem('user');
+        this.transitionTo('login');
+      }
+    }.bind(this));
+  },
 });
 
 App.ApplicationAdapter = DS.FirebaseAdapter.extend({
