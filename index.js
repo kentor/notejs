@@ -1,19 +1,12 @@
-var http = require('http');
+var express = require('express');
 var morgan = require('morgan');
-var serveStatic = require('serve-static');
-var finalhandler = require('finalhandler');
 
-var serve = serveStatic('./public');
-var logger = morgan('dev');
+var app = express();
 
-var server = http.createServer(function(req, res) {
-  var done = finalhandler(req, res);
-  logger(req, res, function() {
-    serve(req, res, done);
-  });
-});
+app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
 
 var port = process.env.PORT || 9292;
-server.listen(port, function() {
+app.listen(port, function() {
   console.log('Listening on port %d', port);
 });
