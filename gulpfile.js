@@ -69,6 +69,7 @@ function notifyLiveReload(event) {
 
 gulp.task('watch', function() {
   gulp.watch('public/*.html', notifyLiveReload);
+  gulp.watch('public/css/**/*.css', notifyLiveReload);
   gulp.watch('public/js/app.js', notifyLiveReload);
 });
 
