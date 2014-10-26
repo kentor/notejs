@@ -47,6 +47,7 @@ App.Note = DS.Model.extend({
   init: function() {
     this._super();
     this.set('localHidden', this.get('hidden'));
+    this.set('backgroundColor', randomColor({luminosity: 'light'}));
   },
 
   hiddenStateLabel: function() {
@@ -203,8 +204,7 @@ App.NoteView = Ember.View.extend({
   },
 
   style: function() {
-    return 'background:%@'
-      .fmt(randomColor({luminosity: 'light'}));
+    return 'background:%@'.fmt(this.get('context.backgroundColor'));
   }.property(),
 
   onclick: function() {
