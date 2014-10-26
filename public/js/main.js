@@ -47,7 +47,7 @@ App.Note = DS.Model.extend({
   init: function() {
     this._super();
     this.set('localHidden', this.get('hidden'));
-    this.set('backgroundColor', randomColor({luminosity: 'light'}));
+    this.set('backgroundGenerator', new App.Utils.BackgroundGenerator());
   },
 
   hiddenStateLabel: function() {
@@ -204,7 +204,7 @@ App.NoteView = Ember.View.extend({
   },
 
   style: function() {
-    return 'background:%@'.fmt(this.get('context.backgroundColor'));
+    return this.get('context.backgroundGenerator').toCSS();
   }.property(),
 
   onclick: function() {
@@ -221,5 +221,50 @@ App.NoteView = Ember.View.extend({
 App.Utils = {
   escapeRegExp: function(str) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  },
+};
+
+App.Utils.BackgroundGenerator = function BackgroundGenerator() {
+  this.color = randomColor({luminosity: 'light'});
+  this.pattern = this.PATTERNS[Math.floor(Math.random()*this.PATTERNS.length)];
+};
+
+App.Utils.BackgroundGenerator.prototype = {
+  PATTERNS: ['checkerboard', 'striped'],
+
+  toCSS: function() {
+    if (this.css) {
+      return this.css;
+    }
+
+    var cssObj = this['_' + this.pattern]();
+    this.css = this._toCSS(cssObj);
+    return this.css;
+  },
+
+  _checkerboard: function() {
+    var backgroundImage = 'linear-gradient(45deg, transparent 25%, rgba(255,255,255,.1) 25%, rgba(255,255,255,.1) 75%, transparent 75%, transparent)';
+    backgroundImage = backgroundImage + ',' + backgroundImage;
+    return {
+      'background-color': this.color,
+      'background-image': backgroundImage,
+      'background-position': '0 0, 15px 15px',
+      'background-size': '30px 30px',
+    };
+  },
+
+  _striped: function() {
+    return {
+      'background-color': this.color,
+      'background-image': 'repeating-linear-gradient(135deg, transparent, transparent 11px, rgba(255,255,255,.1) 11px, rgba(255,255,255,.1) 22px)',
+    };
+  },
+
+  _toCSS: function(cssObj) {
+    var css = '';
+    for (var key in cssObj) {
+      css += '%@:%@;'.fmt(key, cssObj[key]);
+    }
+    return css;
   },
 };
