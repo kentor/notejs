@@ -245,7 +245,7 @@ App.Utils.BackgroundGenerator.prototype = {
   },
 
   _checkerboard: function() {
-    var backgroundImage = 'linear-gradient(45deg, transparent 25%, rgba(255,255,255,.1) 25%, rgba(255,255,255,.1) 75%, transparent 75%, transparent)';
+    var backgroundImage = 'linear-gradient(45deg, transparent 25%, rgba(255,255,255,.2) 25%, rgba(255,255,255,.2) 75%, transparent 75%, transparent)';
     backgroundImage = backgroundImage + ',' + backgroundImage;
     return {
       'background-color': this.color,
@@ -256,7 +256,7 @@ App.Utils.BackgroundGenerator.prototype = {
   },
 
   _dots: function() {
-    var backgroundImage = 'radial-gradient(rgba(255,255,255,.1) 25%, transparent 25%)';
+    var backgroundImage = 'radial-gradient(rgba(255,255,255,.2) 25%, transparent 25%)';
     backgroundImage = backgroundImage + ',' + backgroundImage;
     return {
       'background-color': this.color,
@@ -269,7 +269,7 @@ App.Utils.BackgroundGenerator.prototype = {
   _striped: function() {
     return {
       'background-color': this.color,
-      'background-image': 'repeating-linear-gradient(135deg, transparent, transparent 11px, rgba(255,255,255,.1) 11px, rgba(255,255,255,.1) 22px)',
+      'background-image': 'repeating-linear-gradient(135deg, transparent, transparent 11px, rgba(255,255,255,.2) 11px, rgba(255,255,255,.2) 22px)',
     };
   },
 
