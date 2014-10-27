@@ -230,7 +230,7 @@ App.Utils.BackgroundGenerator = function BackgroundGenerator() {
 };
 
 App.Utils.BackgroundGenerator.prototype = {
-  PATTERNS: ['checkerboard', 'striped'],
+  PATTERNS: ['checkerboard', 'dots', 'striped'],
 
   toCSS: function() {
     if (this.css) {
@@ -244,6 +244,17 @@ App.Utils.BackgroundGenerator.prototype = {
 
   _checkerboard: function() {
     var backgroundImage = 'linear-gradient(45deg, transparent 25%, rgba(255,255,255,.1) 25%, rgba(255,255,255,.1) 75%, transparent 75%, transparent)';
+    backgroundImage = backgroundImage + ',' + backgroundImage;
+    return {
+      'background-color': this.color,
+      'background-image': backgroundImage,
+      'background-position': '0 0, 15px 15px',
+      'background-size': '30px 30px',
+    };
+  },
+
+  _dots: function() {
+    var backgroundImage = 'radial-gradient(rgba(255,255,255,.1) 25%, transparent 25%)';
     backgroundImage = backgroundImage + ',' + backgroundImage;
     return {
       'background-color': this.color,
