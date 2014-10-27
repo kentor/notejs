@@ -3,7 +3,7 @@ var Firebase    = require('firebase');
 var DS          = require('ember-data');
                   require('emberfire');
 var moment      = require('moment');
-var randomColor = require('randomcolor');
+var randomColor = require('./pastel.js');
 var Markdown    = require('pagedown');
 var Hammer      = require('hammerjs');
 
@@ -227,7 +227,7 @@ App.Utils = {
 };
 
 App.Utils.BackgroundGenerator = function BackgroundGenerator() {
-  this.color = randomColor({luminosity: 'light'});
+  this.color = randomColor();
   this.pattern = this.PATTERNS[Math.floor(Math.random()*this.PATTERNS.length)];
 };
 
