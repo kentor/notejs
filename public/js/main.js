@@ -21,6 +21,8 @@ App.firebaseRef = new Firebase('https://qdsndc.firebaseio.com');
 
 App.ApplicationRoute = Ember.Route.extend({
   activate: function() {
+    if (!App.authRequired) return;
+
     App.firebaseRef.onAuth(function(user) {
       if (user) {
         App.set('user', user);
