@@ -4,6 +4,10 @@ A [Firebase](https://www.firebase.com/) backed [Ember](http://emberjs.com/) appl
 ## Demo
 http://kentor.me/notejs/public/ (open two instances side by side to see them sync updates in real time).
 
+<p align="center">
+  <img src="http://i.imgur.com/buwmSol.png" />
+</p>
+
 ## To create your own
 - Fork the project.
 - Run `npm install`.
