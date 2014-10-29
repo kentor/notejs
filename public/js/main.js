@@ -128,14 +128,6 @@ App.IndexController = Ember.ArrayController.extend({
     });
   }.property('filterText', '@each'),
 
-  notesCount: function() {
-    return this.get('length');
-  }.property('length'),
-
-  filteredNotesCount: function() {
-    return this.get('filteredNotes.length');
-  }.property('filteredNotes.length'),
-
   loggedIn: function() {
     return App.get('user');
   }.property('App.user'),
